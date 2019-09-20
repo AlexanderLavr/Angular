@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
-import { NgIf } from '@angular/common';
-import  RegisterService  from '../../services/register.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import RegisterService from 'src/app/services/register.service';
 
 
 
@@ -36,7 +32,7 @@ export class RegistrationComponent implements OnInit{
         password: this.registrForm.get('password').value
       }
 
-      this.RegisterService.post('users/register', register).subscribe(data=>console.log(data))
+      this.RegisterService.getUser('users/register', register).subscribe(data=>console.log(data))
     }
      
   }

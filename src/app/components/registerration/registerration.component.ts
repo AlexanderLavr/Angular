@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { NgIf } from '@angular/common';
+import  RegisterService  from '../../services/register.service';
 
 
 
@@ -12,10 +13,12 @@ import { NgIf } from '@angular/common';
   templateUrl: './registerration.component.html',
   styleUrls: ['./registerration.component.scss']
 })
-export class RegisterrationComponent implements OnInit{
+export class RegistrationComponent implements OnInit{
 
   public registrForm: FormGroup;
-  constructor() {
+  constructor(
+    private RegisterService: RegisterService
+  ) {
     this.registrForm = new FormGroup({
       firstname: new FormControl('', [Validators.required, Validators.minLength(3)]),
       secondname: new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -24,23 +27,22 @@ export class RegisterrationComponent implements OnInit{
     })
   }
 
-  register(): void {
+  register():any{
     if(this.registrForm.status === 'VALID'){
-      
+      const register = {
+        firstname: this.registrForm.get('firstname').value,
+        secondname: this.registrForm.get('secondname').value,
+        email: this.registrForm.get('email').value,
+        password: this.registrForm.get('password').value
+      }
+
+      this.RegisterService.post('users/register', register).subscribe(data=>console.log(data))
     }
-   
+     
   }
-  
-  // fetchHttp() {
-
-  //   this.http.get<any>('https://localhost:5200/users').subscribe(data => console.log(data)
-  //   )
-
-  // }
 
   ngOnInit() {
-    // this.registrForm.valueChanges.subscribe(val=>console.log(val))
-    // this.registrForm.statusChanges.subscribe(status=>console.log(status))
+   
   }
 
 

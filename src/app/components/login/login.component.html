@@ -1,13 +1,22 @@
 <div class="container">
-    <form class="form-login">
+    <form class="form-login" [formGroup]="loginForm">
         <mat-form-field>
-            <input matInput placeholder="email">
+            <input matInput placeholder="email" formControlName="email">
+            <mat-error *ngIf="loginForm.get('email').hasError('required')">
+                Min string length is 3! 
+            </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field>
+            <input type="password" matInput placeholder="password" formControlName="password">
+            <mat-error *ngIf="loginForm.get('password').hasError('required')">
+                Min string length is 3! 
+            </mat-error>
         </mat-form-field>
 
-        <mat-form-field>
-            <input matInput placeholder="password">
-        </mat-form-field>
-
-        <button mat-button>Login</button>
+        <button mat-button (click)="authentication()">Login</button>
     </form>
+    <mat-error *ngIf="error">
+        {{error}}
+    </mat-error>
 </div>

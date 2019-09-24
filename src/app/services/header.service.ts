@@ -1,0 +1,35 @@
+import { Injectable } from '@angular/core';
+import { Subject, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class HeaderService {
+  urlApi = environment.url;
+  private token = new Subject<any>();
+  private authAvatar = new Subject<any>();
+  private chooseAvatar = new Subject<string>();
+  token$ = this.token.asObservable(); 
+  avatar$ = this.authAvatar.asObservable(); 
+  chooseAvatar$ = this.chooseAvatar.asObservable();
+  constructor(private http: HttpClient) { }
+
+  getToken(token:{}){
+    this.token.next(token)
+  }
+  getAvatar(avatar:string){
+    this.authAvatar.next(avatar)
+  }
+  getLocal(name:string){
+    const datalocal = localStorage.getItem(name);
+    return datalocal
+  }
+  chooseImg(img:string){
+    this.chooseAvatar.next(img)
+  }
+  saveChooseImg(url, profile):Observable<any>{
+    return this.http.put(`${this.urlApi}${url}`, profile)
+  }
+}

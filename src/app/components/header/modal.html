@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Edit Profile</h1>
+<div class="holder-avatar-img" mat-dialog-content>
+  <img  id="modal-photo" src={{data.profile}} alt="" >
+</div>
+  <input class="choose-img" type="file" (change)="chooseImg($event, data.profile)">
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick(data.id)">Save</button>
+</div>

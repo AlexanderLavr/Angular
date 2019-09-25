@@ -5,3 +5,21 @@ table {
     border: 1px solid gray;
     background: rgb(207, 207, 207);
 }
+
+.editUserForm,
+.bookForm{
+    span,
+    .mat-form-field{
+        margin-right: 40px;
+    }
+    button{
+        display: flex;
+        margin-left: auto;
+        background: rgb(224, 224, 224);
+    }
+}
+.addBook{
+    display: block;
+    width:  150px;
+    margin: 20px auto;
+}

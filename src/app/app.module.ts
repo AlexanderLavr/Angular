@@ -8,7 +8,7 @@ import { MainComponent } from './components/main/main.component';
 import { HeaderComponent, Modal} from './components/header/header.component';
 import { RegistrationComponent } from './components/registerration/registerration.component';
 import { LoginComponent } from './components/login/login.component';
-import { AdminComponent, ModalEditUser } from './components/admin/admin.component';
+import { AdminComponent, ModalEditUser, ModalBooks } from './components/admin/admin.component';
 import { UserComponent } from './components/user/user.component';
 
 import { CustomHttpInterceptorService } from './services/interceptor';
@@ -31,12 +31,14 @@ import { CoreModule } from './guards/core.module';
     LoginComponent,
     Modal,
     ModalEditUser,
+    ModalBooks,
     AdminComponent,
     UserComponent
   ], 
   entryComponents:[
     Modal,
-    ModalEditUser
+    ModalEditUser,
+    ModalBooks
   ],
   imports: [ 
     CoreModule,

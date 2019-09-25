@@ -1,4 +1,6 @@
 export interface DialogData {
-    profile: string;
-    id: number;
-  }
+    email: string
+    firstname: string
+    id: number
+    secondname: string
+}

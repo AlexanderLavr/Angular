@@ -8,8 +8,8 @@ import { Subject, Observable } from 'rxjs';
 })
 export class AdminService {
   urlApi = environment.url;
-  private editUser = new Subject<any>();
-  $editUser = this.editUser.asObservable();
+  private updateUsers = new Subject<any>();
+  $updateUsers = this.updateUsers;
 constructor(private http: HttpClient) { }
 
   getAllUser(url:string):Observable<any>{
@@ -21,7 +21,17 @@ constructor(private http: HttpClient) { }
   findOne(url:string):Observable<any>{
     return this.http.get(`${this.urlApi}${url}`)
   }
-  getEditUser(user:{}){
-    this.editUser.next(user)
+  update(url:string, updateUser:{}):Observable<any>{
+    return this.http.put(`${this.urlApi}${url}`, updateUser)
+  }
+  updateAll(array:[]){
+    this.updateUsers.next(array)
+  }
+
+  getAllBooks(url:string):Observable<any>{
+    return this.http.get(`${this.urlApi}${url}`)
+  }
+  addBook(url:string, book:{}):Observable<any>{
+    return this.http.post(`${this.urlApi}${url}`, book)
   }
 }

@@ -1,13 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
-import { HttpClient, HttpHandler, HttpInterceptor, HttpRequest, HttpErrorResponse, HttpResponse} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-
-
-interface LoginData{
-  email: string;
-  password: string
-}
+import { LoginData } from 'src/app/models/login-model'
 
 @Injectable({
   providedIn: 'root'
@@ -15,18 +10,18 @@ interface LoginData{
 export class LoginService {
   urlApi = environment.url;
   private loginData = new Subject<LoginData>();
-  register$ = this.loginData.asObservable();  
+  register$ = this.loginData;  
   constructor(private http: HttpClient) { }
  
-  setloginState(loginData:LoginData){
+  setloginState(loginData: LoginData){
     this.loginData.next(loginData)
-  }
-
-  post(url, auth):Observable<any>{
+  } 
+  
+  post(url: string, auth): Observable<any>{
     return this.http.post(`${this.urlApi}${url}`, auth)
   }
 
-  getAvatar(url):Observable<any>{
+  getAvatar(url: string): Observable<any>{
     return this.http.get(`${this.urlApi}${url}`)
   }
 }

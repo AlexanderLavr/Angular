@@ -1,4 +1,3 @@
-
 <div class="container">
         <form class="form-register" [formGroup]="registrForm">
             <mat-form-field>
@@ -13,21 +12,18 @@
                     Min string length is 3! 
                 </mat-error>
             </mat-form-field>
-
             <mat-form-field>
                 <input matInput  placeholder="email" formControlName="email" />
                 <mat-error *ngIf="registrForm.get('email').hasError('required')">
                     Invalid Email! 
                 </mat-error>
             </mat-form-field>
-
             <mat-form-field>
                 <input matInput type="password" placeholder="password" formControlName="password" />
                 <mat-error *ngIf="registrForm.get('password').hasError('required')">
                     Min string length is 3! 
                 </mat-error>
             </mat-form-field>
-           
             <button mat-button (click)="register()" >Registration</button>
         </form>
         <mat-error *ngIf="serverError">

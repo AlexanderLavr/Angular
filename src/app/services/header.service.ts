@@ -16,20 +16,20 @@ export class HeaderService {
   chooseAvatar$ = this.chooseAvatar.asObservable();
   constructor(private http: HttpClient) { }
 
-  getToken(token:{}){
+  getToken(token: {}){
     this.token.next(token)
   }
-  getAvatar(avatar:string){
+  getAvatar(avatar: string){
     this.authAvatar.next(avatar)
   }
-  getLocal(name:string){
+  getLocal(name: string){
     const datalocal = localStorage.getItem(name);
     return datalocal
   }
-  chooseImg(img:string){
+  chooseImg(img: string){
     this.chooseAvatar.next(img)
   }
-  saveChooseImg(url, profile):Observable<any>{
+  saveChooseImg(url, profile): Observable<any>{
     return this.http.put(`${this.urlApi}${url}`, profile)
   }
 }

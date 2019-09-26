@@ -23,3 +23,20 @@ table {
     width:  150px;
     margin: 20px auto;
 }
+.container-paging{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    button{
+        border: 0;
+        background: transparent;
+    }
+    span{
+        color: gray;
+        font-size: .8rem;
+    }
+}
+.sort{
+    border: 0;
+    background: transparent;
+}

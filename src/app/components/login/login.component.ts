@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
 import { HeaderService } from '../../services/header.service';
+import { Router } from '@angular/router';
 import * as jwt_decode from 'jwt-decode';
 
 
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private LoginService:LoginService,
-    private HeaderService: HeaderService
+    private HeaderService: HeaderService,
+    private router: Router
     ){ 
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.email, Validators.required]),
@@ -42,6 +44,8 @@ export class LoginComponent implements OnInit {
         (res:any)=>{
           const token = res.data;
           localStorage.setItem('token', token)
+          localStorage.setItem('books', JSON.stringify([]))
+          localStorage.setItem('countBooks', JSON.stringify(0))
           const decoded:any = jwt_decode(token);
 
           this.LoginService.getAvatar(`users/avatar/${decoded.id}`).subscribe(
@@ -51,13 +55,22 @@ export class LoginComponent implements OnInit {
         },
         (error:any)=>{
           this.error = error.error.error;
-        })
-
-      
-
+      })
     }
   }
   ngOnInit() {
+    const token = this.HeaderService.getLocal('token');
+    if(!token){
+      this.router.navigateByUrl('/login')
+    }
+    if(token){
+      const decoded: any = jwt_decode(token);
+      if(decoded.isAdmin[0] === 'admin'){
+        this.router.navigateByUrl('/admin')
+      }
+      if(decoded.isAdmin[0] === 'user'){
+        this.router.navigateByUrl('/user')
+      }
+    }
   }
-
 }

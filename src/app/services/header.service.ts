@@ -11,6 +11,8 @@ export class HeaderService {
   private token = new Subject<any>();
   private authAvatar = new Subject<any>();
   private chooseAvatar = new Subject<string>();
+  private updateCart = new Subject<string>();
+  $updateCart = this.updateCart; 
   token$ = this.token.asObservable(); 
   avatar$ = this.authAvatar.asObservable(); 
   chooseAvatar$ = this.chooseAvatar.asObservable();
@@ -29,7 +31,11 @@ export class HeaderService {
   chooseImg(img: string){
     this.chooseAvatar.next(img)
   }
+  updateCartModal(){
+    this.updateCart.next()
+  }
   saveChooseImg(url, profile): Observable<any>{
     return this.http.put(`${this.urlApi}${url}`, profile)
   }
+
 }

@@ -17,9 +17,11 @@
         <li class="holder-email">
             Hello: {{email}}!
             <mat-card class="containe-avatar">
-                <img mat-card-avatar src={{profile}} (click)="openDialog($e)" class="avatar">
+                <img mat-card-avatar src={{profile}} (click)="openProfileModal($e)" class="avatar">
             </mat-card>
-            <button mat-icon-button><mat-icon>add_shopping_cart</mat-icon></button>
+            <button mat-icon-button (click)="openCartModal()">
+                <mat-icon matBadge={{countBooks}}>add_shopping_cart</mat-icon>
+            </button>
             <button mat-icon-button (click)="logOut()"><mat-icon>exit_to_app</mat-icon></button>
         </li>
     </ul>

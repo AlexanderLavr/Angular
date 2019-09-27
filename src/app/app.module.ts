@@ -1,5 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CustomHttpInterceptorService } from './services/interceptor';
+import RegisterService from './services/register.service';
+import { ReactiveFormsModule, FormsModule }   from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'; 
+import { MaterialModule } from './material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CoreModule } from './guards/core.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,15 +16,7 @@ import { RegistrationComponent } from './components/registeration/registeration.
 import { LoginComponent } from './components/login/login.component';
 import { AdminComponent, ModalEditUser, ModalBooks } from './components/admin/admin.component';
 import { UserComponent } from './components/user/user.component';
-
-import { CustomHttpInterceptorService } from './services/interceptor';
-import RegisterService from './services/register.service';
-import { ReactiveFormsModule, FormsModule }   from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'; 
-import { MaterialModule } from './material.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CoreModule } from './guards/core.module';
-
+import { ViewBookComponent } from './components/user/viewBook/viewBook.component';
 
 
 
@@ -32,7 +31,8 @@ import { CoreModule } from './guards/core.module';
     ModalEditUser,
     ModalBooks,
     AdminComponent,
-    UserComponent
+    UserComponent,
+    ViewBookComponent
   ], 
   entryComponents:[
     Modal,

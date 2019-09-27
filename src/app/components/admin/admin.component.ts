@@ -105,10 +105,10 @@ export class AdminComponent implements OnInit {
     this.currentPage--
     this.AdminService.getAllBooks(`books/${this.currentPage}`).subscribe(res=>{this.updateBooksTable(res)})
   }
-  sort(e: any){//===================
+  sort(e: any){
     let nameOfColumn: string = e.currentTarget.id;
     let currentPage = this.currentPage;
-    this.AdminService.sortBooks(`books/${nameOfColumn}/${currentPage}`).subscribe(
+    this.AdminService.sortBooks(`books/sort/${nameOfColumn}/${currentPage}`).subscribe(
       res => this.updateBooksTable(res)  
     )
   }

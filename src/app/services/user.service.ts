@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, of } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { catchError } from 'rxjs/operators';
+
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  urlApi = environment.url;
+  private urlApi = environment.url;
   private book = new Subject<any>();
   private eventCart = new Subject<any>();
   $book = this.book;
@@ -22,7 +24,7 @@ constructor(private http: HttpClient) { }
     return this.http.get(`${this.urlApi}${url}`)
   }
 
-  chooseBook(book:{}){
+  chooseBook(book: {}){
     this.book.next(book)
   }
   toCart(){
@@ -35,7 +37,7 @@ constructor(private http: HttpClient) { }
     );
   }
   getMatch(selectBooksArr:any, id:string):boolean{
-    let match:boolean = false;
+    let match: boolean = false;
     for(let element of selectBooksArr){
         if(id === String(element._id)){
           element.totalCount++
@@ -45,6 +47,4 @@ constructor(private http: HttpClient) { }
     }
     return match
   }
-  
-
 }

@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Subject, Observable } from 'rxjs';
+
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HeaderService {
-  urlApi = environment.url;
+  private urlApi = environment.url;
   private token = new Subject<any>();
   private authAvatar = new Subject<any>();
   private chooseAvatar = new Subject<string>();
   private updateCart = new Subject<string>();
-  $updateCart = this.updateCart; 
   token$ = this.token.asObservable(); 
   avatar$ = this.authAvatar.asObservable(); 
   chooseAvatar$ = this.chooseAvatar.asObservable();
+  $updateCart = this.updateCart; 
   constructor(private http: HttpClient) { }
 
   getToken(token: {}){
@@ -37,5 +38,4 @@ export class HeaderService {
   saveChooseImg(url, profile): Observable<any>{
     return this.http.put(`${this.urlApi}${url}`, profile)
   }
-
 }

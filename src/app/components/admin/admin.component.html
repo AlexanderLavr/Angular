@@ -20,13 +20,17 @@
         <ng-container matColumnDef="edit">
           <th mat-header-cell *matHeaderCellDef>edit</th>
           <td mat-cell *matCellDef="let element"> 
-            <button id="ed{{element.id}}" (click)="editUser($event)" mat-icon-button><mat-icon>edit</mat-icon></button>
+            <button id="ed{{element.id}}" (click)="editUser($event)" mat-icon-button>
+              <mat-icon>edit</mat-icon>
+            </button>
           </td>
         </ng-container>
         <ng-container matColumnDef="delete">
           <th mat-header-cell *matHeaderCellDef>delete</th>
           <td mat-cell *matCellDef="let element">  
-              <button id="de{{element.id}}" (click)="deleteUser($event)" mat-icon-button><mat-icon>delete</mat-icon></button>
+            <button id="de{{element.id}}" (click)="deleteUser($event)" mat-icon-button>
+              <mat-icon>delete</mat-icon>
+            </button>
           </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

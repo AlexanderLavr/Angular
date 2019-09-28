@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import RegisterService from 'src/app/services/register.service';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -11,7 +12,6 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./registeration.component.scss']
 })
 export class RegistrationComponent implements OnInit{
-
   public registrForm: FormGroup;
   public serverError: string;
   constructor(
@@ -26,7 +26,6 @@ export class RegistrationComponent implements OnInit{
       password: new FormControl('', [Validators.required, Validators.minLength(3)])
     })
   }
-
   register(): any{
     if(this.registrForm.status === 'VALID'){
       const register = {

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
-import { UserBooks } from 'src/app/models/user-model';
 
 @Component({
   selector: 'app-viewBook',
@@ -8,7 +7,7 @@ import { UserBooks } from 'src/app/models/user-model';
   styleUrls: ['./viewBook.component.scss']
 })
 export class ViewBookComponent implements OnInit {
-  private selectBook:any = {};
+  private selectBook: any = {};
   constructor(
     private UserService: UserService
   ) { 
@@ -17,5 +16,4 @@ export class ViewBookComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

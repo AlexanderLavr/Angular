@@ -1,5 +1,5 @@
 <h1>{{data.title}}</h1>
-<form [formGroup]="bookForm" class="bookForm">
+<form [formGroup]="bookForm" class="book-form">
     <mat-form-field>
       <input matInput placeholder="title" formControlName="title">
       <mat-error *ngIf="bookForm.get('title').hasError('required')">

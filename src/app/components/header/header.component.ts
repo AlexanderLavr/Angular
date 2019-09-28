@@ -1,11 +1,13 @@
-import { Component, OnInit, ɵConsole, Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import * as jwt_decode from 'jwt-decode';
+
 import { HeaderService } from 'src/app/services/header.service';
 import { LoginService } from 'src/app/services/login.service';
 import { UserService } from 'src/app/services/user.service';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import * as jwt_decode from 'jwt-decode';
-import { Router } from '@angular/router';
-import { DialogData } from 'src/app//models/header-model';
+
+import { DialogData } from 'src/app/models/header-model';
 
 
 @Component({
@@ -57,8 +59,6 @@ export class HeaderComponent implements OnInit {
     });
   }
   openCartModal(): void {
-  
- 
     this.dialog.open(Modal, {
       width: 'auto',
       data: {cartModal: true, arrayBooks: this.arrayBooks}

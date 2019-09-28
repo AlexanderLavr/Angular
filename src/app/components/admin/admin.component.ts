@@ -1,10 +1,12 @@
-import { Component, OnInit, Inject, ViewChild } from '@angular/core';
-import  { AdminService } from 'src/app/services/admin.service';
-import { UsersArray, EditBook, BooksArray, DataModalBooks } from 'src/app/models/admin-model';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DialogData } from 'src/app/models/header-model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
+
+import { UsersArray, EditBook, BooksArray, DataModalBooks } from 'src/app/models/admin-model';
+import { DialogData } from 'src/app/models/header-model';
+
+import  { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-admin',
@@ -24,7 +26,7 @@ export class AdminComponent implements OnInit {
 
   constructor(private AdminService: AdminService,
     public dialog: MatDialog,
-    public dialog2: MatDialog,
+    public dialog2: MatDialog
     ) {
     this.getAllUsers()
     this.getAllBooks()
@@ -89,7 +91,7 @@ export class AdminComponent implements OnInit {
     this.allPages = res.allPages;
     this.arrayBooks = res.data;
     this.dataSourceBook = this.arrayBooks;
-    this.dataSourceBook = new MatTableDataSource<any>(this.arrayBooks);
+    this.dataSourceBook = new MatTableDataSource(this.arrayBooks);
   }
   nextPage(){
     if(this.currentPage === this.allPages - 1){

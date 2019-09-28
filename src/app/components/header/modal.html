@@ -1,4 +1,4 @@
-<ng-container *ngIf="data.cartModal === true">
+<ng-container *ngIf="data.cartModal">
   <ng-container *ngIf="data.arrayBooks.length !== 0; else elseTemplate">
     <div *ngFor="let i of data.arrayBooks" class="modal-books-container">
       <div class="modal-books-item">
@@ -25,7 +25,7 @@
   </ng-template>
 </ng-container>
 
-<ng-container *ngIf="data.cartModal === false">
+<ng-container *ngIf="!data.cartModal">
     <h1 mat-dialog-title>Edit Profile</h1>
   <div class="holder-avatar-img" mat-dialog-content>
     <img  id="modal-photo" src={{data.profile}} alt="" >

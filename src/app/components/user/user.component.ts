@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
-import { UserBooks } from 'src/app/models/user-model';
 import { FormControl, FormGroup } from '@angular/forms';
 import { switchMap } from 'rxjs/internal/operators/switchMap';
 import { debounceTime } from 'rxjs/operators';
+
+import { UserBooks } from 'src/app/models/user-model';
+
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user',
